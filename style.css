@@ -397,14 +397,22 @@ aside {
   align-items: start;
 }
 
-.media article > div {
+.media article > div,
+.media article > img {
   grid-column: 1;
   grid-row: 1 / span 4;
   align-self: stretch;
 }
 
-.media article > :not(div) {
+.media article > :not(div):not(img) {
   grid-column: 2;
+}
+
+/* Food page photos: same height as the home page photos */
+.media article > img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
 }
 
 /* Taller restaurant cards (food page only) */
