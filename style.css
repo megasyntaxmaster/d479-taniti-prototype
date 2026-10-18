@@ -1,0 +1,341 @@
+/* Taniti prototype styles: dark glass. */
+
+/* Font, hosted in this repo */
+@font-face {
+  font-family: "Manrope";
+  src: url("fonts/Manrope-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+/* Colors and sizes in one place, so a change here updates every page */
+:root {
+  --bg: #0B1230;
+  --text: #DCE4FF;
+  --text-soft: #C9D4F5;
+  --white: #FFFFFF;
+  --teal-light: #4CC9D4;
+  --teal-pale: #9BE3E8;
+  --magenta: #A72999;
+  --tint: #F3E1F0;
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-line: rgba(255, 255, 255, 0.14);
+  --glow-teal: rgba(40, 159, 170, 0.38);
+  --glow-purple: rgba(95, 39, 167, 0.42);
+  --font: Manrope, system-ui, sans-serif;
+  --radius: 16px;
+}
+
+/* Padding counts inside an element's width, so boxes never spill past the screen edge */
+* {
+  box-sizing: border-box;
+}
+
+/* Page base: dark blue with soft teal and purple glows */
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background:
+    radial-gradient(520px 260px at 85% -5%, var(--glow-teal), transparent),
+    radial-gradient(460px 260px at 0% 0%, var(--glow-purple), transparent),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+/* Keeps the content centered and readable on wide screens */
+body > nav,
+main {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+body > nav {
+  padding: 14px;
+}
+
+body > nav ul {
+  padding: 4px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: 14px;
+}
+
+body > nav li {
+  flex: 1 1 auto;
+}
+
+nav a {
+  display: block;
+  padding: 10px 12px;
+  min-height: 44px;
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+nav a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--white);
+  font-weight: 800;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Shows keyboard users where they are */
+a:focus-visible,
+summary:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--teal-light);
+  outline-offset: 2px;
+}
+
+/* Main content and headings */
+main {
+  padding: 24px 18px 8px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+h1 {
+  font-size: clamp(2rem, 7vw, 2.9rem);
+  letter-spacing: -.025em;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, var(--white), var(--teal-pale));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+main h2 {
+  margin: 32px 0 12px;
+  font-size: .78rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+}
+
+h3 {
+  margin-top: 6px;
+  font-size: 1.1rem;
+  letter-spacing: -.01em;
+  color: var(--white);
+}
+
+p {
+  margin: 0;
+}
+
+section > p {
+  margin-bottom: 14px;
+}
+
+main a {
+  color: var(--tint);
+}
+
+/* Cards: see-through glass */
+article,
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding: 16px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: transform .2s;
+}
+
+article:hover {
+  transform: translateY(-2px);
+}
+
+article p,
+aside p {
+  color: var(--text-soft);
+}
+
+/* Photo placeholders (low-fidelity, labeled) */
+article > div,
+aside > div,
+section > div,
+main > div {
+  display: grid;
+  place-items: center;
+  min-height: 110px;
+  padding: 8px;
+  text-align: center;
+  font-size: .9rem;
+  font-weight: 600;
+  color: #E8F7F8;
+  background: rgba(40, 159, 170, 0.22);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+}
+
+/* Real photos, later */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* "Learn more" drop-downs */
+details summary {
+  min-height: 44px;
+  padding-top: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--tint);
+}
+
+details p {
+  margin: 2px 0 8px;
+}
+
+/* Lists, such as the entertainment list with Book buttons */
+main ul {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+main li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+main li:first-child {
+  border-top: 0;
+}
+
+/* Buttons */
+button {
+  min-height: 44px;
+  padding: 6px 18px;
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 800;
+  color: var(--white);
+  background: var(--magenta);
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: filter .2s;
+}
+
+button:hover {
+  filter: brightness(1.12);
+}
+
+article > button,
+aside > button,
+section > button {
+  align-self: flex-start;
+}
+
+/* Footer */
+footer {
+  width: calc(100% - 28px);
+  max-width: 900px;
+  margin: 28px auto 14px;
+  padding: 18px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  color: var(--text-soft);
+  font-size: .9rem;
+  text-align: center;
+}
+
+footer h2 {
+  margin-bottom: 6px;
+  font-size: .78rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+}
+
+footer nav ul {
+  justify-content: center;
+  gap: 0 18px;
+}
+
+footer nav li {
+  flex: 0 1 auto;
+}
+
+footer nav a {
+  padding: 10px 4px;
+  font-weight: 600;
+  color: var(--tint);
+  text-decoration: underline;
+}
+
+/* Phones and small tablets: nav wraps into three columns */
+@media (max-width: 600px) {
+  main {
+    padding: 20px 14px 8px;
+  }
+
+  body > nav ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  nav a {
+    padding: 10px 4px;
+    font-size: .72rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Respect visitors who turn animation off */
+@media (prefers-reduced-motion: reduce) {
+  article,
+  button {
+    transition: none;
+  }
+
+  article:hover {
+    transform: none;
+  }
+}
