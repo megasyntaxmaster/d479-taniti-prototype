@@ -345,6 +345,12 @@ aside {
   color: var(--white);
 }
 
+.cards article > img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
 /* Rows: a label on the left, text on the right (getting around) */
 .rows article {
   display: grid;
