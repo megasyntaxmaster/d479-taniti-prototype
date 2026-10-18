@@ -303,17 +303,21 @@ section > button {
 /* Layouts that match the wireframes */
 
 /* Cards side by side: home, lodging, activities, getting here.
-   auto-fit fits as many cards per row as there is room for,
-   so phones get one column with no extra code. */
+   Each card starts at 200px and grows to share the row equally,
+   so phones get one column and wide screens fill the whole width. */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 14px;
+}
+
+.cards > article {
+  flex: 1 1 200px;
 }
 
 .cards > h2,
 .cards > p {
-  grid-column: 1 / -1;
+  flex: 1 1 100%;
 }
 
 .cards article {
