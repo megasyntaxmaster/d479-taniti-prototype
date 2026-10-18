@@ -135,6 +135,7 @@ h1 {
   font-size: clamp(2.6rem, 9vw, 4rem);
   letter-spacing: -.025em;
   margin-bottom: 8px;
+  text-align: center;
   background: linear-gradient(90deg, var(--white), var(--teal-pale));
   -webkit-background-clip: text;
   background-clip: text;
@@ -146,6 +147,16 @@ main h2 {
   font-size: 2.4rem;
   letter-spacing: .03em;
   color: var(--teal-light);
+}
+
+main > h2,
+section > h2,
+aside > h2 {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
 }
 
 h3 {
@@ -165,6 +176,9 @@ section > p {
 
 main > p {
   margin-bottom: 24px;
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;  
 }
 
 main a {
@@ -304,6 +318,15 @@ section > button {
 
 .cards article {
   margin-bottom: 0;
+  text-align: center;
+}
+
+.cards article > button {
+  align-self: center;
+}
+
+aside {
+  text-align: center;
 }
 
 .cards article > :last-child {
@@ -341,10 +364,15 @@ section > button {
   grid-column: 1;
   grid-row: 1 / span 3;
   margin: 0;
+  text-align: center;
 }
 
 .rows article > :not(h3) {
   grid-column: 2;
+}
+
+.rows article > button {
+  justify-self: end;
 }
 
 .rows article:hover {
@@ -375,6 +403,49 @@ section > button {
   grid-template-columns: 2fr 1fr;
   gap: 14px;
   align-items: start;
+}
+
+/* Plan your trip links: four clickable tiles (home page) */
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.links li {
+  display: block;
+  padding: 0;
+  border: 0;
+}
+
+.links a {
+  display: block;
+  padding: 22px 16px;
+  text-align: center;
+  font-family: var(--font-head);
+  font-variant-caps: small-caps;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  transition: transform .2s, border-color .2s;
+}
+
+.links a::after {
+  content: " \2192";
+  color: var(--teal-light);
+}
+
+.links a:hover {
+  transform: translateY(-2px);
+  border-color: var(--teal-light);
 }
 
 /* Hero: image box with the heading and button centered on it (home page) */
