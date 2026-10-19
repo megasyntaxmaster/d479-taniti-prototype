@@ -502,7 +502,7 @@ aside {
   text-align: center;
   background:
     linear-gradient(rgba(11, 18, 48, 0.35), rgba(11, 18, 48, 0.6)),
-    url("images/01_home_tropical_island_beach.jpg") center / cover no-repeat;
+    url("images/01_home_tropical-island-beach.jpg") center / cover no-repeat;
   border: 1px solid var(--glass-line);
   border-radius: var(--radius);
 }
