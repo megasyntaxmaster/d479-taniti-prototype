@@ -1,0 +1,677 @@
+/* Taniti prototype styles: dark glass. */
+
+/* Font, hosted in this repo */
+@font-face {
+  font-family: "Manrope";
+  src: url("fonts/Manrope-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Shantell Sans";
+  src: url("fonts/ShantellSans-Variable.ttf") format("truetype");
+  font-weight: 300 800;
+  font-display: swap;
+}
+
+/* Colors and sizes in one place, so a change here updates every page */
+:root {
+  --bg: #0B1230;
+  --text: #DCE4FF;
+  --text-soft: #C9D4F5;
+  --white: #FFFFFF;
+  --teal-light: #4CC9D4;
+  --teal-pale: #9BE3E8;
+  --magenta: #A72999;
+  --tint: #F3E1F0;
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-line: rgba(255, 255, 255, 0.14);
+  --glow-teal: rgba(40, 159, 170, 0.38);
+  --glow-purple: rgba(95, 39, 167, 0.42);
+  --font: "Shantell Sans", system-ui, sans-serif;
+  --font-head: "Shantell Sans", system-ui, sans-serif;
+  --radius: 16px;
+}
+
+/* Padding counts inside an element's width, so boxes never spill past the screen edge */
+* {
+  box-sizing: border-box;
+}
+
+/* Page base: dark blue with soft teal and purple glows */
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background:
+    radial-gradient(520px 260px at 85% -5%, var(--glow-teal), transparent),
+    radial-gradient(460px 260px at 0% 0%, var(--glow-purple), transparent),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+/* Keeps the content centered and readable on wide screens */
+body > nav,
+main {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+body > nav {
+  padding: 14px;
+}
+
+body > nav ul {
+  padding: 4px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: 14px;
+}
+
+body > nav li {
+  flex: 1 1 auto;
+}
+
+nav a {
+  display: block;
+  padding: 10px 12px;
+  min-height: 44px;
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+nav a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--white);
+  font-weight: 800;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Shows keyboard users where they are */
+a:focus-visible,
+summary:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--teal-light);
+  outline-offset: 2px;
+}
+
+/* Main content and headings */
+main {
+  padding: 24px 18px 8px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 800;
+  font-variant-caps: small-caps;
+  font-family: var(--font-head);
+  font-variation-settings: "BNCE" 50, "INFM" 70;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 9vw, 4rem);
+  letter-spacing: -.025em;
+  margin-bottom: 8px;
+  text-align: center;
+  background: linear-gradient(90deg, var(--white), var(--teal-pale));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+main h2 {
+  margin: 32px 0 12px;
+  font-size: 2.4rem;
+  letter-spacing: .03em;
+  color: var(--teal-light);
+}
+
+main > h2,
+section > h2,
+aside > h2 {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+h3 {
+  margin-top: 6px;
+  font-size: 2.1rem;
+  letter-spacing: -.01em;
+  color: var(--white);
+}
+
+p {
+  margin: 0;
+}
+
+section > p {
+  margin-bottom: 14px;
+}
+
+main > p {
+  margin-bottom: 24px;
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;  
+}
+
+main a {
+  color: var(--tint);
+}
+
+/* Cards: see-through glass */
+article,
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding: 16px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: transform .2s;
+}
+
+article:hover {
+  transform: translateY(-2px);
+}
+
+article p,
+aside p {
+  color: var(--text-soft);
+}
+
+/* Photo placeholders (low-fidelity, labeled) */
+article > div,
+aside > div,
+section > div,
+main > div:not(.split) {
+  display: grid;
+  place-items: center;
+  min-height: 110px;
+  padding: 8px;
+  text-align: center;
+  font-size: .9rem;
+  font-weight: 600;
+  color: #E8F7F8;
+  background: rgba(40, 159, 170, 0.22);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+}
+
+/* Real photos, later */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* "Learn more" drop-downs */
+details summary {
+  min-height: 44px;
+  padding-top: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--tint);
+}
+
+details p {
+  margin: 2px 0 8px;
+}
+
+/* Lists, such as the entertainment list with Book buttons */
+main ul {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+main li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+main li:first-child {
+  border-top: 0;
+}
+
+/* Buttons */
+button {
+  min-height: 44px;
+  padding: 6px 18px;
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 800;
+  color: var(--white);
+  background: var(--magenta);
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: filter .2s;
+}
+
+button:hover {
+  filter: brightness(1.12);
+}
+
+article > button,
+aside > button,
+section > button {
+  align-self: flex-start;
+}
+
+/* Layouts that match the wireframes */
+
+/* Cards side by side: home, lodging, activities, getting here.
+   Each card starts at 200px and grows to share the row equally,
+   so phones get one column and wide screens fill the whole width. */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.cards > article {
+  flex: 1 1 200px;
+}
+
+.cards > h2,
+.cards > p {
+  flex: 1 1 100%;
+}
+
+.cards article {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.cards article > button {
+  align-self: center;
+}
+
+aside {
+  text-align: center;
+}
+
+.cards article > :last-child {
+  margin-top: auto;
+}
+
+.cards article h2 {
+  margin: 6px 0 0;
+  font-size: 2.1rem;
+  letter-spacing: -.01em;
+  text-transform: none;
+  color: var(--white);
+}
+
+.cards article > img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Rows: a label on the left, text on the right (getting around) */
+.rows article {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  column-gap: 16px;
+  align-items: center;
+  margin-bottom: -1px;
+  border-radius: 0;
+}
+
+.rows article:first-of-type {
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.rows article:last-of-type {
+  border-radius: 0 0 var(--radius) var(--radius);
+  margin-bottom: 14px;
+}
+
+.rows article > h3 {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  margin: 0;
+  text-align: center;
+}
+
+.rows article > :not(h3) {
+  grid-column: 2;
+}
+
+.rows article > button {
+  justify-self: end;
+}
+
+.rows article:hover {
+  transform: none;
+}
+
+/* Photo on the left, text on the right (food page) */
+.media article {
+  display: grid;
+  grid-template-columns: minmax(110px, 28%) 1fr;
+  column-gap: 16px;
+  align-items: start;
+}
+
+.media article > div,
+.media article > img {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+  align-self: stretch;
+}
+
+.media article > :not(div):not(img) {
+  grid-column: 2;
+}
+
+/* Food page photos: same height as the home page photos */
+.media article > img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Taller restaurant cards (food page only) */
+.split .media article {
+  padding-block: 40px;
+}
+
+/* Two boxes side by side (food page) */
+.split {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 14px;
+  row-gap: 0;
+  align-items: start;
+}
+
+/* Let the heading, intro, and cards be grid items of .split */
+.split > .media {
+  display: contents;
+}
+
+.split > .media > * {
+  grid-column: 1;
+}
+
+/* Top of Local fish and rice (row 3) to bottom of Pan-Asian (row 5) */
+.split > aside {
+  grid-column: 2;
+  grid-row: 3 / span 3;
+  align-self: stretch;
+  justify-content: flex-start;
+}
+
+/* Plan your trip links: four clickable tiles (home page) */
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.links li {
+  display: block;
+  padding: 0;
+  border: 0;
+}
+
+.links a {
+  display: block;
+  padding: 22px 16px;
+  text-align: center;
+  font-family: var(--font-head);
+  font-variant-caps: small-caps;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  transition: transform .2s, border-color .2s;
+}
+
+.links a::after {
+  content: " \2192";
+  color: var(--teal-light);
+}
+
+.links a:hover {
+  transform: translateY(-2px);
+  border-color: var(--teal-light);
+}
+
+/* Hero: image box with the heading and button centered on it (home page) */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 340px;
+  padding: 32px 18px;
+  margin-bottom: 28px;
+  text-align: center;
+  background:
+    linear-gradient(rgba(11, 18, 48, 0.35), rgba(11, 18, 48, 0.6)),
+    url("images/01_home_tropical_island_beach.jpg") center / cover no-repeat;
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+}
+
+.hero h1 {
+  margin-bottom: 0;
+}
+
+.hero a {
+  padding: 14px 28px;
+  font-weight: 800;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--magenta);
+  border-radius: 12px;
+  transition: filter .2s;
+}
+
+.hero a:hover {
+  filter: brightness(1.12);
+}
+
+/* Small screens: everything stacks into one column */
+@media (max-width: 700px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split > aside {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .rows article,
+  .media article {
+    grid-template-columns: 1fr;
+  }
+
+  .rows article > h3,
+  .media article > div {
+    grid-row: auto;
+  }
+
+  .rows article > :not(h3),
+  .media article > :not(div) {
+    grid-column: 1;
+  }
+}
+
+/* Footer */
+footer {
+  width: calc(100% - 28px);
+  max-width: 1100px;
+  margin: 28px auto 14px;
+  padding: 18px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  color: var(--text-soft);
+  font-size: .9rem;
+  text-align: center;
+}
+
+footer h2 {
+  margin-bottom: 6px;
+  font-size: 1.9rem;
+  letter-spacing: .03em;
+  color: var(--teal-light);
+}
+
+footer nav ul {
+  justify-content: center;
+  gap: 0 18px;
+}
+
+footer nav li {
+  flex: 0 1 auto;
+}
+
+footer nav a {
+  padding: 10px 4px;
+  font-weight: 600;
+  color: var(--tint);
+  text-decoration: underline;
+}
+
+/* Phones and small tablets: nav wraps into three columns */
+@media (max-width: 600px) {
+  main {
+    padding: 20px 14px 8px;
+  }
+
+  body > nav ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  nav a {
+    padding: 10px 4px;
+    font-size: .72rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Respect visitors who turn animation off */
+@media (prefers-reduced-motion: reduce) {
+  article,
+  button {
+    transition: none;
+  }
+
+  article:hover {
+    transform: none;
+  }
+}
+
+/* Photo credits table: thumbnail on the left, credit on the right */
+.credits {
+  width: 100%;
+  margin-bottom: 14px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.credits th,
+.credits td {
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: middle;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.credits thead th {
+  border-top: 0;
+  font-size: .85rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+}
+
+.credits th:first-child,
+.credits td:first-child {
+  width: 160px;
+}
+
+.credits img {
+  display: block;
+  width: 140px;
+  height: 90px;
+  object-fit: cover;
+}
+
+.credits td:last-child {
+  color: var(--text-soft);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .credits th:first-child,
+  .credits td:first-child {
+    width: 110px;
+  }
+
+  .credits img {
+    width: 90px;
+    height: 60px;
+  }
+}
